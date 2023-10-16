@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
+}
+
+body{
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+}
+
+.container{
+    max-width: 990px;
+    width: 100%;
+    background: #eee;
+    border-radius: 6px;
+    overflow: hidden;
+    
+}
+
+.toolbar .head {
+    display: flex;
+    margin: 10px;
+    margin-bottom: 16px;
+}
+
+.toolbar .head >  input{
+    max-width: 100%;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    outline: none;
+}
+
+.toolbar .head select{
+    background: rgb(186, 185, 185);
+    border-radius: 6px;
+    border: 2px solid #eee;
+    outline: none;
+    cursor: pointer;
+}
+
+.toolbar .head .colour{
+    background: #fff;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    outline: none;
+    cursor: pointer;
+}
+
+.toolbar .head .colour input{
+    border: none;
+}
+
+.toolbar .head .colour input::-moz-color-swatch{
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+}
+
+.toolbar .head .background{
+    background: #fff;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    outline: none;
+    cursor: pointer;
+}
+
+.toolbar .head .background input{
+    border: none;
+}
+
+.btn-toolbar{
+    display: flex;
+    width: 40%;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-around;
+}
