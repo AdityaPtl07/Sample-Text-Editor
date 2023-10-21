@@ -1,0 +1,28 @@
+body{
+    background-color: #cedce6;
+}
+
+.toolbar{
+    background-color: #1a2228;
+    border-radius: 8px;
+}
+
+.toolbar .nav-item{
+    margin: 4px;
+}
+
+.toolbar .nav-item .nav-link{
+    color: #fff;
+}
+
+.toolbar .nav-item .nav-link:hover, .toolbar .nav-item .nav-link:focus, .toolbar .nav-item .nav-link:active{
+    background-color: #000;
+}
+
+.editor{
+    background-color: #fff;
+    height: calc(100% - 124px);
+    border: 1px solid #1a2228;
+    margin-top: 12px;
+    padding: 12px;
+}

@@ -3,69 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
-    <title>Text Editor</title>   
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="toolbar">
-            <div class="head">
-                <input type="text" value="untitled" placeholder="Filename">
-                <select>
-                    <option value="" selected="" hidden="" disabled="">File</option>
-                    <option value="new">New file</option>
-                    <option value="txt">Save as txt</option>
-                    <option value="pdf">Save as pdf</option>
+    <div class="container p-2" style="height: 100vh;">
+        <ul class="nav nav-pills justify-content-center toolbar p-2">
+            <li class="nav-item">
+              <button class="nav-link" onclick="undo()" title="Undo"><i class="fa-solid fa-rotate-left"></i></button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" onclick="redo()" title="Redo"><i class="fa-solid fa-rotate-right"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="justifyLeft()" title="Left Align"><i class="fa-solid fa-align-left"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="justifyCenter()" title="Center Align"><i class="fa-solid fa-align-center"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="justifyRight()" title="Right Align"><i class="fa-solid fa-align-right"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="orderedList()" title="Ordered List"><i class="fa-solid fa-list-ol"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="unorderedList()" title="Unordered List"><i class="fa-solid fa-list"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="bold()" title="Bold"><i class="fa-solid fa-bold"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="italic()" title="Italic"><i class="fa-solid fa-italic"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="underline()" title="Underlined"><i class="fa-solid fa-underline"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="strike()" title="Strike Through"><i class="fa-solid fa-strikethrough"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="toUpper()" title="UpperCase"><i class="fa-solid fa-arrow-up"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="toLower()" title="LowerCase"><i class="fa-solid fa-arrow-down"></i></button>
+            </li>
+            <li class="nav-item">
+                <select id="input-font" class="form-select" onchange="changeFont(this)">
+                    <option value="Arial">Arial</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Sans serif">Sans serif</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Palatino">Palatino</option>
+                    <option value="Garamond">Garamond</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Arial Black">Arial Black</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
                 </select>
-                <select>
-                    <option value="" selected="" hidden="" disabled="">Format</option>
-                    <option value="h1">Heading 1</option>
-                    <option value="h2">Heading 2</option>
-                    <option value="h3">Heading 3</option>
-                    <option value="h4">Heading 4</option>
-                    <option value="h5">Heading 5</option>
-                    <option value="h6">Heading 6</option>
-                    <option value="p">Paragraph</option>   
+            </li>  
+            <li class="nav-item">
+                <input id="myColor" type="color" class="form-control form-control-color" value="#000" onchange="chooseColor()">
+            </li>
+            <li class="nav-item">
+                <select id="fontSize" class="form-select" onchange="changeSize()">
+                    <option value="1">1</option>      
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
                 </select>
-                <select>
-                    <option value="" selected="" hidden="" disabled="">Font size</option>
-                    <option value="1">Extra small</option>
-                    <option value="2">Small</option>
-                    <option value="3">Regular</option>
-                    <option value="4">Medium</option>
-                    <option value="5">Large</option>
-                    <option value="6">Extra large</option>
-                    <option value="7">Big</option>
-                </select>
-                <div class="colour">
-                    <span>Color</span>
-                    <input type="color" >
-                </div>
-                <div class="background">
-                    <span>Background</span>
-                    <input type="color" >
-                </div>
-            </div>
-            <div class="btn-toolbar">
-                <button><i class='bx bx-undo' ></i></button>
-                <button><i class='bx bx-redo' ></i></button>
-                <button><i class='bx bx-bold'></i></button>
-                <button><i class='bx bx-underline' ></i></button>
-                <button><i class='bx bx-italic' ></i></button>
-                <button><i class='bx bx-strikethrough' ></i></button>
-                <button><i class='bx bx-align-left' ></i></button>
-                <button><i class='bx bx-align-middle' ></i></button>
-                <button><i class='bx bx-align-right' ></i></button>
-                <button><i class='bx bx-align-justify' ></i></button>
-                <button><i class='bx bx-list-ol' ></i></button>
-                <button><i class='bx bx-list-ul' ></i></button>
-                <button><i class='bx bx-link' ></i></button>
-                <button><i class='bx bx-unlink' ></i></button>
-                <button>&lt;/&gt;</button>
-            </div>
+            </li>     
+        </ul>
+        <div id="mainEditor" class="editor" contenteditable="true">
+            <textarea name="txtbox" id="txtbox" cols="171" rows="10"></textarea>
         </div>
     </div>
-    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
